@@ -1,0 +1,6 @@
+[workspace]
+name = "sp-nightly-forge"
+authors = ["Lucas Colley <lucas.colley8@gmail.com>"]
+channels = ["https://prefix.dev/conda-forge"]
+platforms = ["osx-arm64", "linux-64"]
+preview = ["pixi-build"]

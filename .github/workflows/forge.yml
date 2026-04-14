@@ -1,0 +1,35 @@
+name: Forge
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  forge:
+    name: ${{ matrix.repo }}
+    strategy:
+      fail-fast: false
+      matrix:
+         include:
+           - name: scipy
+             repo: scipy/scipy
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          repository: ${{ matrix.repo }}
+          submodules: recursive
+          persist-credentials: false
+      - name: setup-pixi
+        uses: prefix-dev/setup-pixi@a0af7a228712d6121d37aba47adf55c1332c9c2e # v0.9.4
+        with:
+          run-install: false
+      - name: publish
+        run: pixi publish --path ${NAME} --to https://prefix.dev/sp-nightly-forge --generate-attestation
+        env:
+          NAME: ${{ matrix.name }}
