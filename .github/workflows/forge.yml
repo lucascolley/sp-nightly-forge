@@ -49,7 +49,7 @@ jobs:
             repo: ''
             subdir: ''
             noarch: true
-          - name: gmpy2
+          - name: gmpy2-pydev
             type: local
             repo: ''
             subdir: ''
@@ -63,6 +63,9 @@ jobs:
             os: macos-latest
           - package:
               name: scikit-learn
+            os: windows-latest
+          - package:
+              name: gmpy2-pydev
             os: windows-latest
 
     steps:
