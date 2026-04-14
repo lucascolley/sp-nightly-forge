@@ -10,7 +10,7 @@ concurrency:
 
 jobs:
   forge:
-    name: ${{ matrix.name }} ${{ matrix.os }}
+    name: ${{ matrix.package.name }} ${{ matrix.os }}
     permissions:
       id-token: write  # Required for OIDC token
     runs-on: ${{ matrix.os }}
@@ -18,15 +18,21 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest]
+        package:
+          - name: scipy
+            type: remote
+            repo: scipy/scipy
+            subdir: ''
+          - name: numpy
+            type: remote
+            repo: numpy/numpy
+            subdir: pixi-packages/default
+          - name: scikit-learn
+            type: local
+            repo: ''
+            subdir: ''
         include:
-          # - name: scipy
-          #   type: remote
-          #   repo: scipy/scipy
-          #   subdir: ''
-          # - name: numpy
-          #   type: remote
-          #   repo: numpy/numpy
-          #   subdir: pixi-packages/default
+          # noarch packages
           - name: array-api-extra
             type: remote
             repo: data-apis/array-api-extra
@@ -37,21 +43,23 @@ jobs:
             repo: pydata/xarray
             subdir: ''
             os: ubuntu-latest
-          # - name: scikit-learn
-          #   type: local
-          #   repo: ''
-          #   subdir: ''
+          # windows packages
+          - name: scipy
+            type: remote
+            repo: scipy/scipy
+            subdir: ''
+            os: windows-latest
     steps:
       - name: checkout remote
-        if: ${{ matrix.type == 'remote' }}
+        if: ${{ matrix.package.type == 'remote' }}
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
-          repository: ${{ matrix.repo }}
-          path: packages/${{ matrix.name }}
+          repository: ${{ matrix.package.repo }}
+          path: packages/${{ matrix.package.name }}
           submodules: recursive
           persist-credentials: false
       - name: checkout local
-        if: ${{ matrix.type == 'local' }}
+        if: ${{ matrix.package.type == 'local' }}
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           persist-credentials: false
@@ -63,4 +71,4 @@ jobs:
         # TODO: --generate-attestation
         run: pixi publish --path ${PKG_PATH} --to https://prefix.dev/sp-nightly-forge
         env:
-          PKG_PATH: packages/${{ matrix.subdir && format('{0}/{1}', matrix.name, matrix.subdir) || matrix.name }}
+          PKG_PATH: packages/${{ matrix.package.subdir && format('{0}/{1}', matrix.package.name, matrix.package.subdir) || matrix.package.name }}
