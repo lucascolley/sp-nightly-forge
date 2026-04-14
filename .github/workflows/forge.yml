@@ -49,10 +49,15 @@ jobs:
             repo: ''
             subdir: ''
             noarch: true
-          - name: gmpy2-pydev
+          - name: gmpy2
             type: local
             repo: ''
             subdir: ''
+            noarch: false
+          - name: python
+            type: remote
+            repo: python/cpython
+            subdir: Tools/pixi-packages/default
             noarch: false
         exclude:
           - package:
@@ -65,7 +70,10 @@ jobs:
               name: scikit-learn
             os: windows-latest
           - package:
-              name: gmpy2-pydev
+              name: gmpy2
+            os: windows-latest
+          - package:
+              name: python
             os: windows-latest
 
     steps:
