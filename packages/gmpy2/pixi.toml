@@ -5,19 +5,20 @@ preview = ["pixi-build"]
 
 [package]
 version = "9999.0.0"
-license-file = "COPYING"  # TODO: remove file from this repo on next pixi-build-python release
 
 [package.build.backend]
 name = "pixi-build-python"
 version = "*"
 
 [package.build.source]
-git = "https://github.com/scikit-learn/scikit-learn"
+git = "https://github.com/gmpy2/gmpy2"
 
 [package.build.config]
 ignore-pypi-mapping = false
-compilers = ["c", "cxx"]
+compilers = ["c"]
 
-[package.build.host-dependencies]
+[package.host-dependencies]
 uv = "*"
-
+gmp = "*"
+mpfr = "*"
+mpc = "*"
