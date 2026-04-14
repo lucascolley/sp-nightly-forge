@@ -5,7 +5,7 @@ preview = ["pixi-build"]
 
 [package]
 version = "9999.0.0"
-license-file = "COPYING"
+license-file = "COPYING"  # TODO: remove file from this repo on next pixi-build-python release
 
 [package.build.backend]
 name = "pixi-build-python"
