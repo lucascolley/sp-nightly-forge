@@ -18,22 +18,22 @@ jobs:
       fail-fast: false
       matrix:
          include:
-           # - name: scipy
-           #   type: remote
-           #   repo: scipy/scipy
-           #   subdir: ''
-           # - name: numpy
-           #   type: remote
-           #   repo: numpy/numpy
-           #   subdir: pixi-packages/default
+           - name: scipy
+             type: remote
+             repo: scipy/scipy
+             subdir: ''
+           - name: numpy
+             type: remote
+             repo: numpy/numpy
+             subdir: pixi-packages/default
            - name: array-api-extra
              type: remote
              repo: data-apis/array-api-extra
              subdir: ''
-           # - name: xarray
-           #   type: remote
-           #   repo: pydata/xarray
-           #   subdir: ''
+           - name: xarray
+             type: remote
+             repo: pydata/xarray
+             subdir: ''
            - name: scikit-learn
              type: local
              repo: ''
