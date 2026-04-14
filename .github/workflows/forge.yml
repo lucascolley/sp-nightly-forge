@@ -10,45 +10,39 @@ concurrency:
 
 jobs:
   forge:
-    name: ${{ matrix.name }}${{ matrix.noarch && '' || format(' {0}', matrix.os) }}
+    name: ${{ matrix.name }} ${{ matrix.os }}
     permissions:
       id-token: write  # Required for OIDC token
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-        exclude:
-          - noarch: true
-            os: macos-latest
-          - noarch: true
-            os: windows-latest
         include:
           - name: scipy
             type: remote
             repo: scipy/scipy
             subdir: ''
-            noarch: false
+            os: [ubuntu-latest, macos-latest, windows-latest]
           - name: numpy
             type: remote
             repo: numpy/numpy
             subdir: pixi-packages/default
-            noarch: false
+            os: [ubuntu-latest, macos-latest, windows-latest]
           - name: array-api-extra
             type: remote
             repo: data-apis/array-api-extra
             subdir: ''
-            noarch: true
+            os: ubuntu-latest
           - name: xarray
             type: remote
             repo: pydata/xarray
             subdir: ''
-            noarch: true
+            os: ubuntu-latest
           - name: scikit-learn
             type: local
             repo: ''
             subdir: ''
-            noarch: false
+            os: [ubuntu-latest, macos-latest, windows-latest]
     steps:
       - name: checkout remote
         if: ${{ matrix.type == 'remote' }}
