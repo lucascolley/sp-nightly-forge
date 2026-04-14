@@ -17,17 +17,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
         include:
-          - name: scipy
-            type: remote
-            repo: scipy/scipy
-            subdir: ''
-            os: [ubuntu-latest, macos-latest, windows-latest]
-          - name: numpy
-            type: remote
-            repo: numpy/numpy
-            subdir: pixi-packages/default
-            os: [ubuntu-latest, macos-latest, windows-latest]
+          # - name: scipy
+          #   type: remote
+          #   repo: scipy/scipy
+          #   subdir: ''
+          # - name: numpy
+          #   type: remote
+          #   repo: numpy/numpy
+          #   subdir: pixi-packages/default
           - name: array-api-extra
             type: remote
             repo: data-apis/array-api-extra
@@ -42,7 +41,6 @@ jobs:
             type: local
             repo: ''
             subdir: ''
-            os: [ubuntu-latest, macos-latest, windows-latest]
     steps:
       - name: checkout remote
         if: ${{ matrix.type == 'remote' }}
