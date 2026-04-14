@@ -55,4 +55,4 @@ jobs:
         # TODO: --generate-attestation
         run: pixi publish --path ${PKG_PATH} --to https://prefix.dev/sp-nightly-forge
         env:
-          PKG_PATH: ${{ packages }}/${{ matrix.subdir && format('{0}/{1}', matrix.name, matrix.subdir) || matrix.name }}
+          PKG_PATH: packages/${{ matrix.subdir && format('{0}/{1}', matrix.name, matrix.subdir) || matrix.name }}
