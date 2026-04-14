@@ -78,7 +78,4 @@ jobs:
         # TODO: --generate-attestation
         run: pixi publish --path ${PKG_PATH} --to https://prefix.dev/sp-nightly-forge
         env:
-          PKG_PATH: ${{ matrix.os == 'windows-latest'
-              && (matrix.package.subdir && format('packages\\{0}\\{1}', matrix.package.name, matrix.package.subdir) || matrix.package.name)
-              || (matrix.package.subdir && format('packages/{0}/{1}', matrix.package.name, matrix.package.subdir) || matrix.package.name)
-            }}
+          PKG_PATH: packages/${{ matrix.package.subdir && format('{0}/{1}', matrix.package.name, matrix.package.subdir) || matrix.package.name }}
