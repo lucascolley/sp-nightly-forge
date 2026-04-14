@@ -17,41 +17,44 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest, windows-latest]
         package:
           - name: scipy
             type: remote
             repo: scipy/scipy
             subdir: ''
+            noarch: false
           - name: numpy
             type: remote
             repo: numpy/numpy
             subdir: pixi-packages/default
+            noarch: false
           - name: scikit-learn
             type: local
             repo: ''
             subdir: ''
-        include:
-          # noarch packages
-          - os: ubuntu-latest
-            package:
-              name: array-api-extra
-              type: remote
-              repo: data-apis/array-api-extra
-              subdir: ''
-          - os: ubuntu-latest
-            package:
-              name: xarray
-              type: remote
-              repo: pydata/xarray
-              subdir: ''
-          # windows packages
-          - os: windows-latest
-            package:
-              name: scipy
-              type: remote
-              repo: scipy/scipy
-              subdir: ''
+            noarch: false
+          - name: array-api-extra
+            type: remote
+            repo: data-apis/array-api-extra
+            subdir: ''
+            noarch: true
+          - name: xarray
+            type: remote
+            repo: pydata/xarray
+            subdir: ''
+            noarch: true
+        exclude:
+          - package:
+              noarch: true
+            os: windows-latest
+          - package:
+              noarch: true
+            os: macos-latest
+          - package:
+              name: scikit-learn
+            os: windows-latest
+            
             
     steps:
       - name: checkout remote
