@@ -3,6 +3,9 @@ channels = ["https://prefix.dev/conda-forge"]
 platforms = ["osx-arm64", "linux-64"]
 preview = ["pixi-build"]
 
+[package]
+version = "9999.0.0"
+
 [package.build.backend]
 name = "pixi-build-python"
 version = "*"
