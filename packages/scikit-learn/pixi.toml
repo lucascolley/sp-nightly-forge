@@ -18,6 +18,5 @@ git = "https://github.com/scikit-learn/scikit-learn"
 ignore-pypi-mapping = false
 compilers = ["c", "cxx"]
 
-[package.build.host-dependencies]
+[package.host-dependencies]
 uv = "*"
-
