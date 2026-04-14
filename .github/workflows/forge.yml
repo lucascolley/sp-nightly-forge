@@ -10,7 +10,7 @@ concurrency:
 
 jobs:
   forge:
-    name: ${{ matrix.repo }}
+    name: ${{ matrix.name }}
     permissions:
       id-token: write  # Required for OIDC token
     runs-on: ubuntu-latest
@@ -18,33 +18,33 @@ jobs:
       fail-fast: false
       matrix:
          include:
-           - name: scipy
-             type: remote
-             repo: scipy/scipy
-             subdir: ''
-           - name: numpy
-             type: remote
-             repo: numpy/numpy
-             subdir: pixi-packages/default
+           # - name: scipy
+           #   type: remote
+           #   repo: scipy/scipy
+           #   subdir: ''
+           # - name: numpy
+           #   type: remote
+           #   repo: numpy/numpy
+           #   subdir: pixi-packages/default
            - name: array-api-extra
              type: remote
              repo: data-apis/array-api-extra
              subdir: ''
-           - name: xarray
-             type: remote
-             repo: pydata/xarray
-             subdir: ''
-           - name: scikit-learn
-             type: local
-             repo: ''
-             subdir: ''
+           # - name: xarray
+           #   type: remote
+           #   repo: pydata/xarray
+           #   subdir: ''
+           # - name: scikit-learn
+           #   type: local
+           #   repo: ''
+           #   subdir: ''
     steps:
       - name: checkout
         if: ${{ matrix.type == 'remote' }}
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           repository: ${{ matrix.repo }}
-          path: ${{ matrix.name }}
+          path: packages/${{ matrix.name }}
           submodules: recursive
           persist-credentials: false
       - name: setup-pixi
@@ -55,4 +55,4 @@ jobs:
         # TODO: --generate-attestation
         run: pixi publish --path ${PKG_PATH} --to https://prefix.dev/sp-nightly-forge
         env:
-          PKG_PATH: ${{ matrix.subdir && format('{0}/{1}', matrix.name, matrix.subdir) || matrix.name }}
+          PKG_PATH: ${{ packages }}/${{ matrix.subdir && format('{0}/{1}', matrix.name, matrix.subdir) || matrix.name }}
