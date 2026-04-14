@@ -52,6 +52,7 @@ jobs:
         with:
           run-install: false
       - name: publish
-        run: pixi publish --path ${PKG_PATH} --to https://prefix.dev/sp-nightly-forge --generate-attestation
+        # TODO: --generate-attestation
+        run: pixi publish --path ${PKG_PATH} --to https://prefix.dev/sp-nightly-forge
         env:
           PKG_PATH: ${{ matrix.subdir && format('{0}/{1}', matrix.name, matrix.subdir) || matrix.name }}
