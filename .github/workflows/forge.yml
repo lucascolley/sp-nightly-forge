@@ -30,14 +30,14 @@ jobs:
              type: remote
              repo: data-apis/array-api-extra
              subdir: ''
-           # - name: xarray
-           #   type: remote
-           #   repo: pydata/xarray
-           #   subdir: ''
-           # - name: scikit-learn
-           #   type: local
-           #   repo: ''
-           #   subdir: ''
+           - name: xarray
+             type: remote
+             repo: pydata/xarray
+             subdir: ''
+           - name: scikit-learn
+             type: local
+             repo: ''
+             subdir: ''
     steps:
       - name: checkout
         if: ${{ matrix.type == 'remote' }}
