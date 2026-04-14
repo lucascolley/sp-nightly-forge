@@ -37,10 +37,10 @@ jobs:
             repo: pydata/xarray
             subdir: ''
             os: ubuntu-latest
-          - name: scikit-learn
-            type: local
-            repo: ''
-            subdir: ''
+          # - name: scikit-learn
+          #   type: local
+          #   repo: ''
+          #   subdir: ''
     steps:
       - name: checkout remote
         if: ${{ matrix.type == 'remote' }}
