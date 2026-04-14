@@ -44,6 +44,16 @@ jobs:
             repo: pydata/xarray
             subdir: ''
             noarch: true
+          - name: pythran
+            type: local
+            repo: ''
+            subdir: ''
+            noarch: true
+          - name: gmpy2
+            type: local
+            repo: ''
+            subdir: ''
+            noarch: false
         exclude:
           - package:
               noarch: true
