@@ -11,15 +11,36 @@ concurrency:
 jobs:
   forge:
     name: ${{ matrix.repo }}
+    permissions:
+      id-token: write  # Required for OIDC token
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
          include:
-           - name: scipy
-             repo: scipy/scipy
-    runs-on: ubuntu-latest
+           # - name: scipy
+           #   type: remote
+           #   repo: scipy/scipy
+           #   subdir: ''
+           # - name: numpy
+           #   type: remote
+           #   repo: numpy/numpy
+           #   subdir: pixi-packages/default
+           - name: array-api-extra
+             type: remote
+             repo: data-apis/array-api-extra
+             subdir: ''
+           # - name: xarray
+           #   type: remote
+           #   repo: pydata/xarray
+           #   subdir: ''
+           # - name: scikit-learn
+           #   type: local
+           #   repo: ''
+           #   subdir: ''
     steps:
       - name: checkout
+        if: ${{ matrix.type == 'remote' }}
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
         with:
           repository: ${{ matrix.repo }}
@@ -31,6 +52,6 @@ jobs:
         with:
           run-install: false
       - name: publish
-        run: pixi publish --path ${NAME} --to https://prefix.dev/sp-nightly-forge --generate-attestation
+        run: pixi publish --path ${PKG_PATH} --to https://prefix.dev/sp-nightly-forge --generate-attestation
         env:
-          NAME: ${{ matrix.name }}
+          PKG_PATH: ${{ matrix.subdir && format('{0}/{1}', matrix.name, matrix.subdir) || matrix.name }}
