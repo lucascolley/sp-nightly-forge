@@ -33,22 +33,26 @@ jobs:
             subdir: ''
         include:
           # noarch packages
-          - name: array-api-extra
-            type: remote
-            repo: data-apis/array-api-extra
-            subdir: ''
-            os: ubuntu-latest
-          - name: xarray
-            type: remote
-            repo: pydata/xarray
-            subdir: ''
-            os: ubuntu-latest
+          - os: ubuntu-latest
+            package:
+              name: array-api-extra
+              type: remote
+              repo: data-apis/array-api-extra
+              subdir: ''
+          - os: ubuntu-latest
+            package:
+              name: xarray
+              type: remote
+              repo: pydata/xarray
+              subdir: ''
           # windows packages
-          - name: scipy
-            type: remote
-            repo: scipy/scipy
-            subdir: ''
-            os: windows-latest
+          - os: windows-latest
+            package:
+              name: scipy
+              type: remote
+              repo: scipy/scipy
+              subdir: ''
+            
     steps:
       - name: checkout remote
         if: ${{ matrix.package.type == 'remote' }}
