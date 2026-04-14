@@ -4,3 +4,22 @@ authors = ["Lucas Colley <lucas.colley8@gmail.com>"]
 channels = ["https://prefix.dev/conda-forge"]
 platforms = ["osx-arm64", "linux-64"]
 preview = ["pixi-build"]
+
+[tasks.hooks]
+cmd = "lefthook install"
+description = "Install pre-commit hooks"
+
+[tasks.lint]
+cmd = "lefthook run pre-commit --all-files --force"
+description = "Run lint checks"
+
+[tasks.zizmor]
+cmd = "zizmor .github -p"
+
+[dependencies]
+lefthook = "*"
+# linters
+actionlint = "*"
+dprint = "*"
+typos = "*"
+zizmor = "*"

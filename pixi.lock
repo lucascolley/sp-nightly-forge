@@ -5,5 +5,156 @@ environments:
     - url: https://prefix.dev/conda-forge/
     options:
       pypi-prerelease-mode: if-necessary-or-explicit
-    packages: {}
-packages: []
+    packages:
+      linux-64:
+      - conda: https://prefix.dev/conda-forge/linux-64/_openmp_mutex-4.5-20_gnu.conda
+      - conda: https://prefix.dev/conda-forge/linux-64/actionlint-1.7.12-h8bc977c_0.conda
+      - conda: https://prefix.dev/conda-forge/linux-64/dprint-0.50.0-hb23c6cf_0.conda
+      - conda: https://prefix.dev/conda-forge/linux-64/lefthook-2.1.5-hfc2019e_0.conda
+      - conda: https://prefix.dev/conda-forge/linux-64/libgcc-15.2.0-he0feb66_18.conda
+      - conda: https://prefix.dev/conda-forge/linux-64/libgomp-15.2.0-he0feb66_18.conda
+      - conda: https://prefix.dev/conda-forge/linux-64/typos-1.45.0-hdab8a38_0.conda
+      - conda: https://prefix.dev/conda-forge/linux-64/zizmor-1.24.0-hb17b654_0.conda
+      osx-arm64:
+      - conda: https://prefix.dev/conda-forge/osx-arm64/actionlint-1.7.12-h7969508_0.conda
+      - conda: https://prefix.dev/conda-forge/osx-arm64/dprint-0.50.0-h8dba533_0.conda
+      - conda: https://prefix.dev/conda-forge/osx-arm64/lefthook-2.1.5-hf76c51c_0.conda
+      - conda: https://prefix.dev/conda-forge/osx-arm64/typos-1.45.0-h748bcf4_0.conda
+      - conda: https://prefix.dev/conda-forge/osx-arm64/zizmor-1.24.0-h6fdd925_0.conda
+packages:
+- conda: https://prefix.dev/conda-forge/linux-64/_openmp_mutex-4.5-20_gnu.conda
+  build_number: 20
+  sha256: 1dd3fffd892081df9726d7eb7e0dea6198962ba775bd88842135a4ddb4deb3c9
+  md5: a9f577daf3de00bca7c3c76c0ecbd1de
+  depends:
+  - __glibc >=2.17,<3.0.a0
+  - libgomp >=7.5.0
+  constrains:
+  - openmp_impl <0.0a0
+  license: BSD-3-Clause
+  license_family: BSD
+  size: 28948
+  timestamp: 1770939786096
+- conda: https://prefix.dev/conda-forge/linux-64/actionlint-1.7.12-h8bc977c_0.conda
+  sha256: 1fff5ee0d83045ef90104ca83f52b4c44feb4ab2036fc7903fe9733f50721209
+  md5: bab393750db08f50eebaf96f50d18734
+  depends:
+  - libgcc >=14
+  - __glibc >=2.17
+  - __glibc >=2.17,<3.0.a0
+  license: MIT
+  license_family: MIT
+  size: 2131192
+  timestamp: 1774975766537
+- conda: https://prefix.dev/conda-forge/osx-arm64/actionlint-1.7.12-h7969508_0.conda
+  sha256: 94a8c69857d5365990f8231a901ea102736694546497cc674962e97b3e8d8d96
+  md5: 87084addab359d538cbf8493726cf3f8
+  depends:
+  - __osx >=11.0
+  license: MIT
+  license_family: MIT
+  size: 1855795
+  timestamp: 1774975876774
+- conda: https://prefix.dev/conda-forge/linux-64/dprint-0.50.0-hb23c6cf_0.conda
+  sha256: 84a7ab17f3d3d50242a28506e599cc06b1ecea8f4f4d5e6e808d6c15d19ba6f7
+  md5: aa32af075fd0d097fbb7f42a1886611b
+  depends:
+  - __glibc >=2.17,<3.0.a0
+  - libgcc >=13
+  constrains:
+  - __glibc >=2.17
+  license: MIT
+  license_family: MIT
+  size: 6006705
+  timestamp: 1747623395464
+- conda: https://prefix.dev/conda-forge/osx-arm64/dprint-0.50.0-h8dba533_0.conda
+  sha256: 6a2de866896d638c8d437f281568d272ea2726edb93556075b6145aafbe6f749
+  md5: 483a7eea67dc9053c3f3e332db34e016
+  depends:
+  - __osx >=11.0
+  constrains:
+  - __osx >=11.0
+  license: MIT
+  license_family: MIT
+  size: 5466628
+  timestamp: 1747623425492
+- conda: https://prefix.dev/conda-forge/linux-64/lefthook-2.1.5-hfc2019e_0.conda
+  sha256: d0d1a52895ce42a26b0475724795d36e6a111ddd54f3b8c80c3c877c05d21030
+  md5: 71bc6dbda04b29a3a483933d863522b6
+  license: MIT
+  license_family: MIT
+  size: 5434302
+  timestamp: 1775469996195
+- conda: https://prefix.dev/conda-forge/osx-arm64/lefthook-2.1.5-hf76c51c_0.conda
+  sha256: 2d5b51c0ea363dde2e3ec17c5eb892af551f521abf8759402266a2c6708e8fe7
+  md5: 58404afa7b34e15c8aa59d465230e981
+  license: MIT
+  license_family: MIT
+  size: 4890445
+  timestamp: 1775470093132
+- conda: https://prefix.dev/conda-forge/linux-64/libgcc-15.2.0-he0feb66_18.conda
+  sha256: faf7d2017b4d718951e3a59d081eb09759152f93038479b768e3d612688f83f5
+  md5: 0aa00f03f9e39fb9876085dee11a85d4
+  depends:
+  - __glibc >=2.17,<3.0.a0
+  - _openmp_mutex >=4.5
+  constrains:
+  - libgcc-ng ==15.2.0=*_18
+  - libgomp 15.2.0 he0feb66_18
+  license: GPL-3.0-only WITH GCC-exception-3.1
+  license_family: GPL
+  size: 1041788
+  timestamp: 1771378212382
+- conda: https://prefix.dev/conda-forge/linux-64/libgomp-15.2.0-he0feb66_18.conda
+  sha256: 21337ab58e5e0649d869ab168d4e609b033509de22521de1bfed0c031bfc5110
+  md5: 239c5e9546c38a1e884d69effcf4c882
+  depends:
+  - __glibc >=2.17,<3.0.a0
+  license: GPL-3.0-only WITH GCC-exception-3.1
+  license_family: GPL
+  size: 603262
+  timestamp: 1771378117851
+- conda: https://prefix.dev/conda-forge/linux-64/typos-1.45.0-hdab8a38_0.conda
+  sha256: cfa5031f61e010b1842e48945cd6c371273447469efc8c0ae1d3b75d4e18b208
+  md5: d8cd36c5a6d1f55b78fe762f26944dab
+  depends:
+  - __glibc >=2.17,<3.0.a0
+  - libgcc >=14
+  constrains:
+  - __glibc >=2.17
+  license: MIT
+  license_family: MIT
+  size: 3317099
+  timestamp: 1775063408121
+- conda: https://prefix.dev/conda-forge/osx-arm64/typos-1.45.0-h748bcf4_0.conda
+  sha256: 9f36eca8bcc33fa16d3abba4d7ed6c20a408a17006a709c6aa04790697685da4
+  md5: d8cbd00a1afc53a7f94fc63b87c30e0d
+  depends:
+  - __osx >=11.0
+  constrains:
+  - __osx >=11.0
+  license: MIT
+  license_family: MIT
+  size: 2933485
+  timestamp: 1775064157843
+- conda: https://prefix.dev/conda-forge/linux-64/zizmor-1.24.0-hb17b654_0.conda
+  sha256: c06ad3dd61cca8add94e772f3e8bdd743eba69545ac288c3f3a624a992dc6a17
+  md5: ddc29710bf344f610bee37766d402e61
+  depends:
+  - libgcc >=14
+  - __glibc >=2.17,<3.0.a0
+  constrains:
+  - __glibc >=2.17
+  license: MIT
+  size: 7003465
+  timestamp: 1776057193561
+- conda: https://prefix.dev/conda-forge/osx-arm64/zizmor-1.24.0-h6fdd925_0.conda
+  sha256: 643c214db8fffbfde0e05a7513b26a427137ae4422dcd38e855d73b82b1f5803
+  md5: b7d07b435b3edee8e9ba018d02c50a8b
+  depends:
+  - __osx >=11.0
+  constrains:
+  - __osx >=11.0
+  license: MIT
+  size: 6441182
+  timestamp: 1776057266114
