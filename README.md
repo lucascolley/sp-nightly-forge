@@ -31,4 +31,3 @@ The forge is implemented around the [`pixi publish`](https://pixi.prefix.dev/lat
 and invokes `pixi publish`.
 Packages are forged from [Pixi package](https://pixi.prefix.dev/latest/reference/pixi_manifest/#the-package-section) definitions, which can live
 either in a remote repository, or in [the `packages` directory of the forge](https://github.com/lucascolley/sp-nightly-forge/tree/main/packages).
->>>>>>> dc8e66a (add README)
