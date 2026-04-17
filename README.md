@@ -10,7 +10,7 @@ Packages can be forged from development versions of package sources on a regular
 
 ## Usage
 
-Example usage with `pixi.
+Example usage with [`pixi`](https://pixi.prefix.dev):
 
 ```console
 $ pixi init example && cd example
