@@ -1,10 +1,10 @@
 [workspace]
-channels = ["https://prefix.dev/conda-forge", "https://prefix.dev/sp-nightly-forge"]
-platforms = ["osx-arm64", "linux-64"]
+channels = ["https://prefix.dev/sp-nightly-forge", "https://prefix.dev/conda-forge"]
+platforms = ["osx-arm64", "linux-64", "linux-aarch64"]
 preview = ["pixi-build"]
 
 [workspace.build-variants]
-python = ["3.15.*"]
+python = ["3.16.*"]
 
 [package]
 version = "9999.0.0"
@@ -21,7 +21,6 @@ ignore-pypi-mapping = false
 compilers = ["c"]
 
 [package.host-dependencies]
-uv = "*"
 python = "*"
 gmp = "*"
 mpfr = "*"
